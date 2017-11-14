@@ -5,7 +5,7 @@
 	<artifactId>jaxrs-and-jersey-alura</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Jersey Web Application</name>
+	<name>store</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
