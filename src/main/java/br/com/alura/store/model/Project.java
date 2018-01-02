@@ -1,46 +1,44 @@
 package br.com.alura.store.model;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-import com.thoughtworks.xstream.XStream;
-
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+@Entity
+@Table(name = "PROJECT")
 public class Project {
 
-	private Long id;
-	private String name;
-	private Integer year;
+    @GeneratedValue
+    @Id
+    private Long id;
+    private String name;
+    private Integer year;
 
-	public Project(Long id, String name, Integer year) {
-		this.id = id;
-		this.name = name;
-		this.year = year;
-	}
+    public Project(Long id, String name, Integer year) {
+        this.id = id;
+        this.name = name;
+        this.year = year;
+    }
 
-	public Project() {
-	}
+    public Project() {
 
-	public String toXML() {
-		return new XStream().toXML(this);
-	}
+    }
 
-	public void setId(Long id2) {
-		this.id = id2;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public Integer getYear() {
-		return year;
-	}
+    public Integer getYear() {
+        return year;
+    }
 
 }

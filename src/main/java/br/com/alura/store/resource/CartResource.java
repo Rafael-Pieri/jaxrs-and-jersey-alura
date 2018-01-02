@@ -1,7 +1,8 @@
 package br.com.alura.store.resource;
 
+import br.com.alura.store.model.Cart;
+import br.com.alura.store.repository.CartRepository;
 import java.net.URI;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -12,45 +13,49 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RestController;
 
-import br.com.alura.store.dao.CartDAO;
-import br.com.alura.store.model.Cart;
-
+@Component
 @Path("carts")
 public class CartResource {
 
-	@Path("{id}")
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public Cart find(@PathParam("id") long id) {
-		return new CartDAO().find(id);
-	}
+    @Autowired
+    private CartRepository cartRepository;
 
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response add(Cart cart) {
-		new CartDAO().add(cart);
+    @Path("{id}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Cart find(@PathParam("id") long id) {
+        return cartRepository.findOne(id).get();
+    }
 
-		URI uri = URI.create("/carts/" + cart.getId());
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response add(Cart cart) {
+        cartRepository.save(cart);
 
-		return Response.created(uri).build();
-	}
+        URI uri = URI.create("/carts/" + cart.getId());
 
-	@Path("{id}/products/{productId}")
-	@DELETE
-	public Response removeProduct(@PathParam("id") Long id, @PathParam("productId") Long productId) {
-		new CartDAO().find(id).remove(productId);
+        return Response.created(uri).build();
+    }
 
-		return Response.noContent().build();
-	}
+    @Path("{id}/products/{productId}")
+    @DELETE
+    public Response removeProduct(@PathParam("id") Long id, @PathParam("productId") Long productId) {
+        cartRepository.delete(productId);
 
-	@Path("{id}/products/{productId}/quantity")
-	@PUT
-	public Response updateProduct(@PathParam("id") Long id, @PathParam("productId") Long productId, String content) {
-		Cart cart = new CartDAO().find(id);
-		cart.changeQuantity(cart.findProductById(productId));
+        return Response.noContent().build();
+    }
 
-		return Response.ok().build();
-	}
+    @Path("{id}/products/{productId}/quantity")
+    @PUT
+    public Response updateProduct(@PathParam("id") Long id, @PathParam("productId") Long productId, String content) {
+        Cart cart = cartRepository.findOne(id).get();
+//		cart.changeQuantity(cart.findProductById(productId));
+
+        return Response.ok().build();
+    }
 
 }
