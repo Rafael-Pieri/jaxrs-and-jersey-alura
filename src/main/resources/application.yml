@@ -11,10 +11,10 @@ spring:
     name: platform.shared.notificationpromptmiddle
     version: 1.0.0
 swagger:
-  title: Notification Prompt Service
-  description: This service manages a set, of applicable notification prompts, and persists user responses to those prompts.
+  title: Jax-RS Course
+  description: Creating RESTful Web Services with Jersey
   contact:
-    name: Mathew Mathew
-    url: http://www.ebsco.com
-    email: draspa@ebsco.com
+    name: Rafael de Pieri Barbosa
+    url: http://www.alura.com
+    email: rafaelpieribarbosa@gmail.com
   version: 0.0.1
