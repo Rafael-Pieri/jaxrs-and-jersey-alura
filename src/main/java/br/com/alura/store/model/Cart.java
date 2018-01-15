@@ -1,13 +1,16 @@
 package br.com.alura.store.model;
 
+import br.com.alura.store.dto.CartDTO;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.springframework.beans.BeanUtils;
 
 @Entity
 @Table(name = "CART")
@@ -16,54 +19,24 @@ public class Cart {
     @GeneratedValue
     @Id
     private Long id;
+
     private String street;
+
     private String city;
-    @OneToMany
+
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Product> products = new ArrayList<>();
 
     public Cart() {
+
     }
 
-//    public Cart add(Product product) {
-//        products.add(product);
-//        return this;
-//    }
-//
-//    public Product findProductById(Long productId) {
-//        return products.stream().filter(c -> c.getId() == productId).findFirst().get();
-//    }
-//
-//    public Cart to(String street, String city) {
-//        this.street = street;
-//        this.city = city;
-//        return this;
-//    }
-
-//    public void remove(Long id) {
-//        for (Iterator<Product> iterator = products.iterator(); iterator.hasNext(); ) {
-//            Product product = iterator.next();
-//
-//            if (product.getId() == id) {
-//                iterator.remove();
-//            }
-//        }
-//    }
-//
-//    public void change(Product product) {
-//        remove(product.getId());
-//        add(product);
-//    }
-//
-//    public void changeQuantity(Product product) {
-//        for (Iterator<Product> iterator = products.iterator(); iterator.hasNext(); ) {
-//            Product actualProduct = iterator.next();
-//
-//            if (actualProduct.getId() == product.getId()) {
-//                actualProduct.setQuantity(product.getQuantity());
-//                return;
-//            }
-//        }
-//    }
+    public Cart(CartDTO cartDTO) {
+        BeanUtils.copyProperties(cartDTO, this);
+//        this.street = cartDTO.getStreet();
+//        this.city = cartDTO.getCity();
+//        this.products = cartDTO.getProducts();
+    }
 
     public Cart setId(Long id) {
         this.id = id;

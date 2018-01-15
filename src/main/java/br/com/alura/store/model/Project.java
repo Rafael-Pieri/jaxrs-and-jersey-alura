@@ -1,9 +1,11 @@
 package br.com.alura.store.model;
 
+import br.com.alura.store.dto.ProjectDTO;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.springframework.beans.BeanUtils;
 
 @Entity
 @Table(name = "PROJECT")
@@ -15,30 +17,37 @@ public class Project {
     private String name;
     private Integer year;
 
-    public Project(Long id, String name, Integer year) {
-        this.id = id;
-        this.name = name;
-        this.year = year;
+    public Project(ProjectDTO projectDTO) {
+        BeanUtils.copyProperties(projectDTO, this);
+        this.name = projectDTO.getName();
+        this.year = projectDTO.getYear();
     }
 
     public Project() {
 
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Integer getYear() {
         return year;
     }
 
+    public void setYear(Integer year) {
+        this.year = year;
+    }
 }

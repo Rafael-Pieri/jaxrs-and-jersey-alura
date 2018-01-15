@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 public class JerseyConfig extends ResourceConfig {
 
     public JerseyConfig() {
+        packages("br.com.alura.store");
         register(CartResource.class);
         register(ProjectResource.class);
     }

@@ -7,3 +7,14 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5Dialect
     hibernate:
       ddl-auto: update
+  application:
+    name: platform.shared.notificationpromptmiddle
+    version: 1.0.0
+swagger:
+  title: Notification Prompt Service
+  description: This service manages a set, of applicable notification prompts, and persists user responses to those prompts.
+  contact:
+    name: Mathew Mathew
+    url: http://www.ebsco.com
+    email: draspa@ebsco.com
+  version: 0.0.1
