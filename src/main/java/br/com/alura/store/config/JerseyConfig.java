@@ -13,5 +13,4 @@ public class JerseyConfig extends ResourceConfig {
         register(CartResource.class);
         register(ProjectResource.class);
     }
-
 }

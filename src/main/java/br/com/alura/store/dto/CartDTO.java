@@ -1,18 +1,16 @@
 package br.com.alura.store.dto;
 
-import br.com.alura.store.model.Product;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 public class CartDTO {
 
     private Long id;
     private String street;
     private String city;
-    private List<ProductDTO> products = new ArrayList<>();
+    private Collection<ProductDTO> products = new ArrayList<>();
 
-    public CartDTO() {
-    }
+    public CartDTO() {}
 
     public CartDTO setId(Long id) {
         this.id = id;
@@ -39,7 +37,7 @@ public class CartDTO {
         return id;
     }
 
-    public List<ProductDTO> getProducts() {
+    public Collection<ProductDTO> getProducts() {
         return products;
     }
 
@@ -58,9 +56,8 @@ public class CartDTO {
         return this;
     }
 
-    public CartDTO withProducts(List<ProductDTO> products) {
+    public CartDTO withProducts(Collection<ProductDTO> products) {
         this.products = products;
         return this;
     }
-
 }

@@ -8,23 +8,20 @@ import javax.persistence.Table;
 import org.springframework.beans.BeanUtils;
 
 @Entity
-@Table(name = "PROJECT")
 public class Project {
 
-    @GeneratedValue
     @Id
+    @GeneratedValue
     private Long id;
     private String name;
     private Integer year;
+
+    public Project() {}
 
     public Project(ProjectDTO projectDTO) {
         BeanUtils.copyProperties(projectDTO, this);
         this.name = projectDTO.getName();
         this.year = projectDTO.getYear();
-    }
-
-    public Project() {
-
     }
 
     public Long getId() {

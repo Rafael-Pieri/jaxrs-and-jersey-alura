@@ -4,12 +4,10 @@ public class ErrorMessageDTO {
 
     private String message;
 
+    public ErrorMessageDTO() {}
+
     public ErrorMessageDTO(String message) {
         this.message = message;
-    }
-
-    public ErrorMessageDTO() {
-
     }
 
     public String getMessage() {
@@ -20,5 +18,3 @@ public class ErrorMessageDTO {
         this.message = message;
     }
 }
-
-

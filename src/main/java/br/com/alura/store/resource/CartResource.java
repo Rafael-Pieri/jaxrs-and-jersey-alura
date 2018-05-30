@@ -4,11 +4,15 @@ import br.com.alura.store.dto.CartDTO;
 import br.com.alura.store.exception.EntityNotFoundException;
 import br.com.alura.store.mapper.CartMapper;
 import br.com.alura.store.model.Cart;
+import br.com.alura.store.model.Product;
 import br.com.alura.store.repository.CartRepository;
+import br.com.alura.store.repository.ProductRepository;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -38,6 +42,9 @@ public class CartResource {
     @Inject
     private CartRepository cartRepository;
 
+    @Inject
+    private ProductRepository productRepository;
+
     @Path("{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -60,14 +67,14 @@ public class CartResource {
     }
 
     //TODO is not working
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Response add(CartDTO cartDTO) {
         Cart cart = new Cart(cartDTO);
 
         cartRepository.save(cart).orElseThrow(RuntimeException::new);
-
+//        productRepository.save(cart.getProducts());
         URI uri = URI.create("/api/carts/" + cart.getId());
 
         return Response.created(uri).build();

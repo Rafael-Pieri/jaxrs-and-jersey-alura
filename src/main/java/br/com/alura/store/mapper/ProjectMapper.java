@@ -13,9 +13,7 @@ public class ProjectMapper {
 
     public static final ProjectMapper INSTANCE = new ProjectMapper();
 
-    private ProjectMapper() {
-
-    }
+    private ProjectMapper() {}
 
     public Collection<ProjectDTO> toProjectList(Optional<List<Project>> projects) {
         return projects.orElseGet(ArrayList::new)

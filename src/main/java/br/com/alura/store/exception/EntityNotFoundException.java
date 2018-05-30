@@ -13,9 +13,7 @@ public class EntityNotFoundException extends RuntimeException implements Excepti
         super(message);
     }
 
-    public EntityNotFoundException() {
-
-    }
+    public EntityNotFoundException() {}
 
     @Override
     public Response toResponse(EntityNotFoundException exception) {

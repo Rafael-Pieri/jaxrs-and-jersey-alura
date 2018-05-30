@@ -83,5 +83,4 @@ public class ProjectResource {
 
         return Response.noContent().build();
     }
-
 }

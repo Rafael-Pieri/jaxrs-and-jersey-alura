@@ -2,8 +2,8 @@ package br.com.alura.store.model;
 
 import br.com.alura.store.dto.CartDTO;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Collection;
+import java.util.stream.Collectors;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,11 +13,10 @@ import javax.persistence.Table;
 import org.springframework.beans.BeanUtils;
 
 @Entity
-@Table(name = "CART")
 public class Cart {
 
-    @GeneratedValue
     @Id
+    @GeneratedValue
     private Long id;
 
     private String street;
@@ -25,17 +24,21 @@ public class Cart {
     private String city;
 
     @OneToMany(fetch = FetchType.EAGER)
-    private List<Product> products = new ArrayList<>();
+    private Collection<Product> products = new ArrayList<>();
 
-    public Cart() {
-
-    }
+    public Cart() {}
 
     public Cart(CartDTO cartDTO) {
         BeanUtils.copyProperties(cartDTO, this);
-//        this.street = cartDTO.getStreet();
-//        this.city = cartDTO.getCity();
-//        this.products = cartDTO.getProducts();
+        this.street = cartDTO.getStreet();
+        this.city = cartDTO.getCity();
+        this.products = cartDTO.getProducts().stream()
+            .map(Product::new)
+            .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public Cart setId(Long id) {
@@ -51,20 +54,15 @@ public class Cart {
         this.street = street;
     }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
-
     public String getCity() {
         return city;
     }
 
-    public Long getId() {
-        return id;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public List<Product> getProducts() {
+    public Collection<Product> getProducts() {
         return products;
     }
-
 }
