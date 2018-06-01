@@ -44,7 +44,7 @@ public class ProjectResource {
         ProjectDTO projectDTO = new ProjectDTO();
 
         BeanUtils.copyProperties(projectRepository.findOne(id).orElseThrow(() -> {
-            LOGGER.info("The Project " + id.toString() + " does not exist");
+            LOGGER.info("The Project {} does not exist", id);
             return new EntityNotFoundException(PROJECT_NOT_FOUND);
         }), projectDTO);
 
@@ -64,7 +64,7 @@ public class ProjectResource {
     public Response save(ProjectDTO projectDTO) {
         Project project = new Project(projectDTO);
 
-        projectRepository.save(project).orElseThrow(RuntimeException::new);
+        projectRepository.save(project);
 
         URI uri = URI.create("/api/projects/" + project.getId());
 
