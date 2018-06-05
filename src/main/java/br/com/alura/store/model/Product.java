@@ -14,8 +14,11 @@ public class Product {
     @Id
     @GeneratedValue
     private Long id;
+
     private BigDecimal price;
+
     private String name;
+
     private Integer quantity;
 
     public Product() {}

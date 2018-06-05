@@ -1,20 +1,17 @@
 spring:
+  application:
+      name: store
+      version: 1.0.0
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/store
+    url: jdbc:mysql://localhost:3306/storeDB?createDatabaseIfNotExist=true&useSSL=false
     username: root
     password: root
   jpa:
     database-platform: org.hibernate.dialect.MySQL5Dialect
     hibernate:
       ddl-auto: update
-  application:
-    name: platform.shared.notificationpromptmiddle
-    version: 1.0.0
+
 swagger:
   title: Jax-RS Course
-  description: Creating RESTful Web Services with Jersey
-  contact:
-    name: Rafael de Pieri Barbosa
-    url: http://www.alura.com
-    email: rafaelpieribarbosa@gmail.com
+  description: Creating RESTful Web Services with Jersey.
   version: 0.0.1

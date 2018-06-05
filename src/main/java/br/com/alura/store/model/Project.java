@@ -13,7 +13,9 @@ public class Project {
     @Id
     @GeneratedValue
     private Long id;
+
     private String name;
+
     private Integer year;
 
     public Project() {}
