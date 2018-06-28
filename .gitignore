@@ -1,28 +1,17 @@
-# Eclipse
-.classpath
-.project
-.springBeans
-.settings/
-bin/
+gradle/
+build/
+out/
+out/*
 
-# Intellij
+jms-test.iml
+src/main/main.iml
+src/test/test.iml
+
 .idea/
-*.iml
+.gradle/
+
+### IntelliJ IDEA ###
+.idea
 *.iws
-
-# Mac
-.DS_Store
-
-# Maven
-log/
-target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
-dependency-reduced-pom.xml
-buildNumber.properties
-.mvn/
-mvnw
-mvnw.cmd
+*.iml
+*.ipr

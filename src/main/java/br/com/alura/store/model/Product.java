@@ -1,12 +1,9 @@
 package br.com.alura.store.model;
 
-import br.com.alura.store.dto.ProductDTO;
-import java.math.BigDecimal;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import org.springframework.beans.BeanUtils;
+import java.math.BigDecimal;
 
 @Entity
 public class Product {
@@ -21,33 +18,42 @@ public class Product {
 
     private Integer quantity;
 
-    public Product() {}
+    public Product() {
 
-    public Product(ProductDTO productDTO) {
-        BeanUtils.copyProperties(productDTO, this);
-        this.price = productDTO.getPrice();
-        this.name = productDTO.getName();
-        this.quantity = productDTO.getQuantity();
     }
 
-    public BigDecimal getPrice() {
-        return price;
+    public Product(BigDecimal price, String name, Integer quantity) {
+        this.price = price;
+        this.name = name;
+        this.quantity = quantity;
     }
 
     public Long getId() {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
     public String getName() {
         return name;
     }
 
-    public Integer getQuantity() {
-        return quantity;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public BigDecimal getTotalPrice() {
-        return price.multiply(BigDecimal.valueOf(quantity));
+    public Integer getQuantity() {
+        return quantity;
     }
 
     public void setQuantity(Integer quantity) {

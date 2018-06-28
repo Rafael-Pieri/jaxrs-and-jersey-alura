@@ -8,13 +8,7 @@ import org.springframework.data.repository.Repository;
 
 public interface ProductRepository extends Repository<Product, Long> {
 
-    Optional<Product> findOne(Long id);
-
-    Optional<List<Product>> findAll();
-
     Optional<Product> save(Product product);
-
-    Optional<Product> save(Collection<Product> products);
 
     void delete(Long id);
 

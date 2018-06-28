@@ -4,27 +4,18 @@ import java.math.BigDecimal;
 
 public class ProductDTO {
 
-    private Long id;
+//    private Long id;
     private BigDecimal price;
     private String name;
     private Integer quantity;
 
-    public ProductDTO() {}
-
-    public ProductDTO(Long id, String name, BigDecimal price, Integer quantity) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
 
     public BigDecimal getPrice() {
         return price;
@@ -48,25 +39,5 @@ public class ProductDTO {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
-    }
-
-    public ProductDTO withId(Long id) {
-        this.id = id;
-        return this;
-    }
-
-    public ProductDTO withPrice(BigDecimal price) {
-        this.price = price;
-        return this;
-    }
-
-    public ProductDTO withName(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public ProductDTO withQuantity(Integer quantity) {
-        this.quantity = quantity;
-        return this;
     }
 }

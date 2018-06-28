@@ -2,19 +2,19 @@ package br.com.alura.store.dto;
 
 public class ErrorMessageDTO {
 
-    private String message;
+    private String errorMessage;
 
     public ErrorMessageDTO() {}
 
-    public ErrorMessageDTO(String message) {
-        this.message = message;
+    public ErrorMessageDTO(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
 
-    public String getMessage() {
-        return message;
+    public String getErrorMessage() {
+        return errorMessage;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
 }

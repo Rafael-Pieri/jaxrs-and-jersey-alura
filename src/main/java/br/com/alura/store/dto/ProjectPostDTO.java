@@ -1,18 +1,9 @@
 package br.com.alura.store.dto;
 
-public class ProjectDTO {
+public class ProjectPostDTO {
 
-    private Long id;
     private String name;
     private Integer year;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

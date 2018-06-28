@@ -3,20 +3,11 @@ package br.com.alura.store.dto;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class CartDTO {
+public class CartPostDTO {
 
-    private Long id;
     private String street;
     private String city;
     private Collection<ProductDTO> products = new ArrayList<>();
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getStreet() {
         return street;

@@ -3,9 +3,9 @@ spring:
       name: store
       version: 1.0.0
   datasource:
-    url: jdbc:mysql://localhost:3306/storeDB?createDatabaseIfNotExist=true&useSSL=false
-    username: root
-    password: root
+    url: jdbc:mysql://127.0.0.1:3306/storeDB?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+    username: arun
+    password: password
   jpa:
     database-platform: org.hibernate.dialect.MySQL5Dialect
     hibernate:
