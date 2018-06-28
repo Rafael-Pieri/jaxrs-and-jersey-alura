@@ -16,11 +16,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Component
 public class CartService {
@@ -54,25 +52,9 @@ public class CartService {
 
     @Transactional
     public Cart add(CartPostDTO cartPostDTO) {
-
-//    public Cart(CartPostDTO cartPostDTO) {
-//            BeanUtils.copyProperties(cartPostDTO, this);
-//            this.street = cartPostDTO.getStreet();
-//            this.city = cartPostDTO.getCity();
-//            this.products = cartPostDTO.getProducts().stream()
-//                    .map(Product::new)
-//                    .collect(Collectors.toCollection(ArrayList::new));
-//        }
-        Cart cart1 = new Cart();
-        BeanUtils.copyProperties(cartPostDTO, cart1);
-        Cart cart = cartRepository.save(cart1).orElseThrow(RuntimeException::new);
-
-//        cartPostDTO.getProducts().forEach(productDTO -> {
-//            productDTO.setId(cart.getId());
-//            productRepository.save(new Product(productDTO));
-//        });
-
-        return cartRepository.findOne(cart.getId()).orElseThrow(RuntimeException::new);
+        Cart cart = new Cart();
+        BeanUtils.copyProperties(cartPostDTO, cart);
+        return cartRepository.save(cart).orElseThrow(RuntimeException::new);
     }
 
     public Cart updateProduct(Long id, Long productId, ProductPutDTO quantity) {

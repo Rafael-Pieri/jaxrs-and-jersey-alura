@@ -1,5 +1,7 @@
 package br.com.alura.store.dto;
 
+import br.com.alura.store.model.Product;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -7,7 +9,7 @@ public class CartPostDTO {
 
     private String street;
     private String city;
-    private Collection<ProductDTO> products = new ArrayList<>();
+    private Collection<Product> products = new ArrayList<>();
 
     public String getStreet() {
         return street;
@@ -25,11 +27,11 @@ public class CartPostDTO {
         this.city = city;
     }
 
-    public Collection<ProductDTO> getProducts() {
+    public Collection<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(Collection<ProductDTO> products) {
+    public void setProducts(Collection<Product> products) {
         this.products = products;
     }
 }
