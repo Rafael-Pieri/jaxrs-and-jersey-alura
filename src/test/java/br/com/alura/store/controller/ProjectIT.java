@@ -1,5 +1,6 @@
 package br.com.alura.store.controller;
 
+import br.com.alura.store.dto.ErrorMessageDTO;
 import br.com.alura.store.dto.ProjectDTO;
 import br.com.alura.store.dto.ProjectPostDTO;
 import br.com.alura.store.model.Project;
@@ -23,13 +24,12 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 public class ProjectIT {
 
     private static final String API_PATH = "/api/projects";
-    private static final String ID = "id";
-    private static final String NAME = "name";
-    private static final String YEAR = "year";
+    private static final String API_PATH_WITH_NON_EXISTENT_ID = "/api/projects/123";
     private static final String LOCATION = "Location";
     private static final String JERSEY = "Jersey";
     private static final String SPRING = "Spring";
     private static final Integer _2018 = 2018;
+    private static final String PROJECT_NOT_FOUND = "Project not found";
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -47,15 +47,20 @@ public class ProjectIT {
                 .getForEntity(location, ProjectDTO.class);
 
         assertThat(projectFound.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(projectFound.getBody()).hasFieldOrProperty(ID);
-        assertThat(projectFound.getBody()).hasFieldOrProperty(NAME);
-        assertThat(projectFound.getBody()).hasFieldOrProperty(YEAR);
+        assertThat(projectFound.getBody().getId()).isNotNull();
+        assertThat(projectFound.getBody().getName()).isEqualTo(JERSEY);
+        assertThat(projectFound.getBody().getYear()).isEqualTo(_2018);
 
         this.restTemplate.delete(location);
     }
 
-    private String getLocation(ResponseEntity<Project> responseEntity) {
-        return responseEntity.getHeaders().get(LOCATION).get(0);
+    @Test
+    public void findShouldReturnNotFound() {
+        final ResponseEntity<ErrorMessageDTO> projectFound = this.restTemplate
+                .getForEntity(API_PATH_WITH_NON_EXISTENT_ID, ErrorMessageDTO.class);
+
+        assertThat(projectFound.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+        assertThat(projectFound.getBody().getErrorMessage()).isEqualTo(PROJECT_NOT_FOUND);
     }
 
     @Test
@@ -105,5 +110,18 @@ public class ProjectIT {
                 .exchange(location, HttpMethod.DELETE, RequestEntity.EMPTY, Void.class);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
+    }
+
+    @Test
+    public void deleteShouldReturnNotFound() {
+        final ResponseEntity<ErrorMessageDTO> response = this.restTemplate
+                .exchange(API_PATH_WITH_NON_EXISTENT_ID, HttpMethod.DELETE, RequestEntity.EMPTY, ErrorMessageDTO.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+        assertThat(response.getBody().getErrorMessage()).isEqualTo(PROJECT_NOT_FOUND);
+    }
+
+    private String getLocation(ResponseEntity<Project> responseEntity) {
+        return responseEntity.getHeaders().get(LOCATION).get(0);
     }
 }
