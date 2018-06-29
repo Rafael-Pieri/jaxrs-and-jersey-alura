@@ -28,24 +28,12 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-jersey')
     compile('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.springframework.boot:spring-boot-starter-web')
-// https://mvnrepository.com/artifact/io.swagger/swagger-jaxrs
-//    compile group: 'io.swagger', name: 'swagger-jaxrs', version: '1.5.20'
-// https://mvnrepository.com/artifact/com.holon-platform.jaxrs/holon-jaxrs-swagger
-    // https://mvnrepository.com/artifact/com.holon-platform.jaxrs/holon-starter-jersey
-    compile group: 'com.holon-platform.jaxrs', name: 'holon-starter-jersey', version: '5.1.1'
-
-    compile group: 'com.holon-platform.jaxrs', name: 'holon-jaxrs-swagger', version: '5.1.1'
-//    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.8.0'
-//    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.8.0'
-// https://mvnrepository.com/artifact/io.swagger/swagger-jersey2-jaxrs
+    compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.9.3'
     compile group: 'io.swagger', name: 'swagger-jersey2-jaxrs', version: '1.5.20'
 
-//    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.7.0'
-//    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.7.0'
-
-    compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.9.3'
     runtime('mysql:mysql-connector-java')
+    runtime ('com.h2database:h2:1.4.197')
 
+    testCompile group: 'com.jayway.restassured', name: 'rest-assured', version: '2.9.0'
     testCompile('org.springframework.boot:spring-boot-starter-test')
-    testCompile('com.github.tomakehurst:wiremock:2.14.0')
 }

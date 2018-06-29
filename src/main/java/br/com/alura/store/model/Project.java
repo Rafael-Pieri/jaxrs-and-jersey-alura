@@ -15,6 +15,16 @@ public class Project {
 
     private Integer year;
 
+    public Project() {
+
+    }
+
+    public Project(Long id, String name, Integer year) {
+        this.id = id;
+        this.name = name;
+        this.year = year;
+    }
+
     public Long getId() {
         return id;
     }

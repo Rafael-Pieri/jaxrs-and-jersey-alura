@@ -15,3 +15,21 @@ swagger:
   title: Jax-RS Course
   description: Creating RESTful Web Services with Jersey.
   version: 0.0.1
+
+---
+spring:
+  profiles: test
+  h2:
+    console:
+      enabled: true
+      path: /console
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:activemqDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: root
+    password: root
+    platform: h2
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+#    hibernate:
+#      ddl-auto: update

@@ -5,6 +5,15 @@ public class ProjectPostDTO {
     private String name;
     private Integer year;
 
+    public ProjectPostDTO() {
+
+    }
+
+    public ProjectPostDTO(String name, Integer year) {
+        this.name = name;
+        this.year = year;
+    }
+
     public String getName() {
         return name;
     }

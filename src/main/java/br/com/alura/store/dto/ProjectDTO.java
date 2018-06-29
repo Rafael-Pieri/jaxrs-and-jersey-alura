@@ -6,6 +6,16 @@ public class ProjectDTO {
     private String name;
     private Integer year;
 
+    public ProjectDTO() {
+
+    }
+
+    public ProjectDTO(Long id, String name, Integer year) {
+        this.id = id;
+        this.name = name;
+        this.year = year;
+    }
+
     public Long getId() {
         return id;
     }

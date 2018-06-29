@@ -5,12 +5,17 @@ import br.com.alura.store.resource.ProjectResource;
 import io.swagger.jaxrs.config.BeanConfig;
 import io.swagger.jaxrs.listing.ApiListingResource;
 import io.swagger.jaxrs.listing.SwaggerSerializers;
-import javax.annotation.PostConstruct;
 import org.glassfish.jersey.server.ResourceConfig;
+import org.glassfish.jersey.servlet.ServletContainer;
+import org.glassfish.jersey.servlet.ServletProperties;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-@Component
+import javax.annotation.PostConstruct;
+
+@Configuration
 public class JerseyConfig extends ResourceConfig {
 
     @Value("${spring.jersey.application-path:/api/docs}")
@@ -18,6 +23,13 @@ public class JerseyConfig extends ResourceConfig {
 
     public JerseyConfig() {
         this.registerEndpoints();
+    }
+
+    @Bean
+    public ServletRegistrationBean jerseyServlet() {
+        ServletRegistrationBean registration = new ServletRegistrationBean(new ServletContainer(), "/rest/*");
+        registration.addInitParameter(ServletProperties.JAXRS_APPLICATION_CLASS, JerseyConfig.class.getName());
+        return registration;
     }
 
     @PostConstruct
@@ -39,7 +51,7 @@ public class JerseyConfig extends ResourceConfig {
         config.setTitle("POC - Restful API by Spring Boot, Jersey, Swagger");
         config.setVersion("v1");
         config.setContact("Rafael De Pieri Barbosa");
-        config.setSchemes(new String[] {"http", "https"});
+        config.setSchemes(new String[]{"http", "https"});
         config.setBasePath(this.apiPath);
         config.setResourcePackage("br.com.alura.store.resource");
         config.setPrettyPrint(true);
