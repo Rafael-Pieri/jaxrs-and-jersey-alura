@@ -11,6 +11,16 @@ public class CartPostDTO {
     private String city;
     private Collection<Product> products = new ArrayList<>();
 
+    public CartPostDTO() {
+
+    }
+
+    public CartPostDTO(String street, String city, Collection<Product> products) {
+        this.street = street;
+        this.city = city;
+        this.products = products;
+    }
+
     public String getStreet() {
         return street;
     }

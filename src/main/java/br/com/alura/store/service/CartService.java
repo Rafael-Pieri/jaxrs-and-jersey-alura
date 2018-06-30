@@ -79,7 +79,7 @@ public class CartService {
     public void removeProduct(Long id, Long productId) {
         checkIfCartExists(id);
 
-        if (!productRepository.exists(id)) {
+        if (!productRepository.exists(productId)) {
             LOGGER.error(THE_PRODUCT_DOES_NOT_EXIST, id);
             throw new EntityNotFoundException(PRODUCT_NOT_FOUND);
         }

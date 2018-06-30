@@ -73,11 +73,11 @@ public class ProjectIT {
         final ResponseEntity<Project> springProject = this.restTemplate
                 .postForEntity(API_PATH, springProjectDTO, Project.class);
 
-        final ResponseEntity<ProjectDTO[]> projectFound = this.restTemplate
+        final ResponseEntity<ProjectDTO[]> projectsFound = this.restTemplate
                 .getForEntity(API_PATH, ProjectDTO[].class);
 
-        assertThat(projectFound.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(projectFound.getBody()).hasSize(2);
+        assertThat(projectsFound.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(projectsFound.getBody()).hasSize(2);
 
         this.restTemplate.delete(getLocation(jerseyProject));
         this.restTemplate.delete(getLocation(springProject));
