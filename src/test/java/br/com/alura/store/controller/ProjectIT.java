@@ -28,7 +28,7 @@ public class ProjectIT {
     private static final String LOCATION = "Location";
     private static final String JERSEY = "Jersey";
     private static final String SPRING = "Spring";
-    private static final Integer _2018 = 2018;
+    private static final Integer YEAR_2018 = 2018;
     private static final String PROJECT_NOT_FOUND = "Project not found";
 
     @Autowired
@@ -36,7 +36,7 @@ public class ProjectIT {
 
     @Test
     public void findShouldReturnOk() {
-        final ProjectPostDTO jerseyProjectDTO = new ProjectPostDTO(JERSEY, _2018);
+        final ProjectPostDTO jerseyProjectDTO = new ProjectPostDTO(JERSEY, YEAR_2018);
 
         final ResponseEntity<Project> jerseyProject = this.restTemplate
                 .postForEntity(API_PATH, jerseyProjectDTO, Project.class);
@@ -49,7 +49,7 @@ public class ProjectIT {
         assertThat(projectFound.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(projectFound.getBody().getId()).isNotNull();
         assertThat(projectFound.getBody().getName()).isEqualTo(JERSEY);
-        assertThat(projectFound.getBody().getYear()).isEqualTo(_2018);
+        assertThat(projectFound.getBody().getYear()).isEqualTo(YEAR_2018);
 
         this.restTemplate.delete(location);
     }
@@ -65,8 +65,8 @@ public class ProjectIT {
 
     @Test
     public void findAllShouldReturnOk() {
-        final ProjectPostDTO jerseyProjectDTO = new ProjectPostDTO(JERSEY, _2018);
-        final ProjectPostDTO springProjectDTO = new ProjectPostDTO(SPRING, _2018);
+        final ProjectPostDTO jerseyProjectDTO = new ProjectPostDTO(JERSEY, YEAR_2018);
+        final ProjectPostDTO springProjectDTO = new ProjectPostDTO(SPRING, YEAR_2018);
 
         final ResponseEntity<Project> jerseyProject = this.restTemplate
                 .postForEntity(API_PATH, jerseyProjectDTO, Project.class);
@@ -85,7 +85,7 @@ public class ProjectIT {
 
     @Test
     public void createShouldReturnCreated() {
-        final ProjectPostDTO jerseyProjectDTO = new ProjectPostDTO(JERSEY, _2018);
+        final ProjectPostDTO jerseyProjectDTO = new ProjectPostDTO(JERSEY, YEAR_2018);
 
         final ResponseEntity<Project> jerseyProject = this.restTemplate
                 .postForEntity(API_PATH, jerseyProjectDTO, Project.class);
@@ -99,7 +99,7 @@ public class ProjectIT {
 
     @Test
     public void deleteShouldReturnNoContent() {
-        final ProjectPostDTO jerseyProjectDTO = new ProjectPostDTO(JERSEY, _2018);
+        final ProjectPostDTO jerseyProjectDTO = new ProjectPostDTO(JERSEY, YEAR_2018);
 
         final ResponseEntity<Project> jerseyProject = this.restTemplate
                 .postForEntity(API_PATH, jerseyProjectDTO, Project.class);
