@@ -57,6 +57,11 @@ public class CartService {
         return cartRepository.save(cart).orElseThrow(RuntimeException::new);
     }
 
+    public void deleteCart(Long id) {
+        checkIfCartExists(id);
+        cartRepository.delete(id);
+    }
+
     public Cart updateProduct(Long id, Long productId, ProductPutDTO quantity) {
         Optional<Product> productSelected = getCartById(id)
                 .getProducts()
@@ -85,11 +90,6 @@ public class CartService {
         }
 
         productRepository.delete(productId);
-    }
-
-    public void deleteCart(Long id) {
-        checkIfCartExists(id);
-        cartRepository.delete(id);
     }
 
     private Cart getCartById(Long id) {

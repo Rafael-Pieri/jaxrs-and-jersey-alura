@@ -34,9 +34,10 @@ public class ProjectServiceTest {
 
     @Test
     public void shouldFindProjectById() {
-        Long projectId = 1L;
+        final Long projectId = 1L;
+        final Project project = new Project(projectId, JERSEY, YEAR_2018);
 
-        when(this.projectRepository.findOne(projectId)).thenReturn(Optional.of(new Project()));
+        when(this.projectRepository.findOne(projectId)).thenReturn(Optional.of(project));
 
         this.projectService.find(projectId);
 
@@ -45,7 +46,7 @@ public class ProjectServiceTest {
 
     @Test(expected = EntityNotFoundException.class)
     public void findProjectByIdShouldThrowAnException() {
-        Long projectId = 1L;
+        final Long projectId = 1L;
 
         when(this.projectRepository.findOne(projectId)).thenThrow(new EntityNotFoundException(PROJECT_NOT_FOUND));
 
@@ -54,7 +55,9 @@ public class ProjectServiceTest {
 
     @Test
     public void findAllShouldReturnAListOfProjects() {
-        when(this.projectRepository.findAll()).thenReturn(Optional.of(Collections.singletonList(new Project())));
+        final Project project = new Project(1L, JERSEY, YEAR_2018);
+
+        when(this.projectRepository.findAll()).thenReturn(Optional.of(Collections.singletonList(project)));
 
         this.projectService.findAll();
 
@@ -63,9 +66,10 @@ public class ProjectServiceTest {
 
     @Test
     public void shouldSaveProject() {
-        ProjectPostDTO projectPostDTO = new ProjectPostDTO(JERSEY, YEAR_2018);
+        final ProjectPostDTO projectPostDTO = new ProjectPostDTO(JERSEY, YEAR_2018);
+        final Project project = new Project(1L, JERSEY, YEAR_2018);
 
-        when(this.projectRepository.save(anyObject())).thenReturn(Optional.of(new Project()));
+        when(this.projectRepository.save(anyObject())).thenReturn(Optional.of(project));
 
         this.projectService.save(projectPostDTO);
 
@@ -74,7 +78,7 @@ public class ProjectServiceTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void saveShouldThrowAnException() {
-        ProjectPostDTO projectPostDTO = new ProjectPostDTO(JERSEY, YEAR_2018);
+        final ProjectPostDTO projectPostDTO = new ProjectPostDTO(JERSEY, YEAR_2018);
 
         when(this.projectRepository.save(anyObject())).thenThrow(new IllegalArgumentException(UNKNOWN_ERROR));
 
@@ -83,19 +87,20 @@ public class ProjectServiceTest {
 
     @Test
     public void shouldDeleteProject() {
-        Long projectId = 1L;
+        final Long projectId = 1L;
 
         when(this.projectRepository.exists(projectId)).thenReturn(true);
         doNothing().when(this.projectRepository).delete(projectId);
 
         this.projectService.remove(projectId);
 
+        verify(this.projectRepository, times(1)).exists(projectId);
         verify(this.projectRepository, times(1)).delete(projectId);
     }
 
     @Test(expected = EntityNotFoundException.class)
     public void removeShouldThrowAnException() {
-        Long projectId = 1L;
+        final Long projectId = 1L;
 
         when(this.projectRepository.exists(projectId)).thenReturn(false);
 
