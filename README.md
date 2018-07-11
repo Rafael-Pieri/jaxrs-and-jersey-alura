@@ -12,10 +12,4 @@ From version 1.1 on, JAX-RS is an official part of Java EE 6. A notable feature 
 Jersey RESTful Web Services framework is an open source framework for developing RESTful Web Services in Java. It provides support for JAX-RS APIs and serves as a JAX-RS (JSR 311 & JSR 339) Reference Implementation.
 
 ### How to run the application
-Follow the command below to create the application image:
-
-```docker build -t openjdk-8/jaxrs-and-jersey-alura .```
-
-Once the application image is created, execute the following command to deploy the application:
-
-```docker-compose up```
+In maintenance
