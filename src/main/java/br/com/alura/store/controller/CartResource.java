@@ -1,4 +1,4 @@
-package br.com.alura.store.resource;
+package br.com.alura.store.controller;
 
 import br.com.alura.store.dto.CartDTO;
 import br.com.alura.store.dto.CartPostDTO;
