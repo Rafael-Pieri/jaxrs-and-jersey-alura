@@ -49,4 +49,4 @@ Jersey RESTful Web Services framework is an open source framework for developing
 ```curl -X "DELETE" http://localhost:8081/api/projects/1```
 
 ### Postman
-The postman collection is available to be imported at:
+The postman collection is available to be imported at: https://github.com/rafael-pieri/jaxrs-and-jersey-alura/tree/master/postman
