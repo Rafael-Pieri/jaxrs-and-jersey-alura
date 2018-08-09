@@ -17,11 +17,13 @@ Jersey RESTful Web Services framework is an open source framework for developing
 
 Execute the following command to deploy the application:
 
-```docker-compose up```
+`docker-compose up`
 
-It contains two controllers, one managing carts and their products,
+It will available at: `http://localhost:8081`
+
+The application contains two controllers, one for managing carts and their products,
 and another one for managing products. Below are some curl commands to reach out the
-operations provided by the application.
+operations provided by it.
 
 ---
 
