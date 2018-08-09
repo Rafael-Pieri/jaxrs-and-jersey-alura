@@ -11,10 +11,8 @@ spring:
     hibernate:
       ddl-auto: update
 
-swagger:
-  title: Jax-RS Course
-  description: Creating RESTful Web Services with Jersey.
-  version: 0.0.1
+server:
+  port: 8081
 
 ---
 spring:
