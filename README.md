@@ -20,7 +20,7 @@ It contains two controllers, one managing carts and their products,
 and another one for managing products. Below are some curl commands to reach out the
 operations provided by the application.
 
-#### Cart Operations
+### Cart Operations
 
 **Create a new cart:**
 
@@ -48,7 +48,7 @@ operations provided by the application.
 
 
 
-#### Project Operations
+### Project Operations
 
 **Create a new project:**
 
