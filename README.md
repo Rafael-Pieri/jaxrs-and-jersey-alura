@@ -13,8 +13,6 @@ Jersey RESTful Web Services framework is an open source framework for developing
 
 ### How to run the application
 
-
-
 Execute the following command to deploy the application:
 
 `docker-compose up`
