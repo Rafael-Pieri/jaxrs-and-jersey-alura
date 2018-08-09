@@ -14,38 +14,48 @@ Jersey RESTful Web Services framework is an open source framework for developing
 ### How to run the application
 ```gradle bootRun```
 
-### Cart Operations
+#### Cart Operations
 
-#### Create a new cart
+Create a new cart:
+
 ```curl -d '{"street": "street one","city": "new york","products": [{"price": 115.9,"name": "shoes","quantity": 1},{"price": 45,"name": "t-shirt","quantity": 1}]}' -H "Content-Type: application/json" -X POST http://localhost:8081/api/carts```
 
-#### Find all carts
+Find all carts:
+
 ```curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:8081/api/carts```
 
-#### Find a specific cart
+Find a specific cart:
+
 ```curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:8081/api/carts/1```
 
-#### Delete a cart
+Delete a cart:
+
 ```curl -X "DELETE" http://localhost:8081/api/carts/1```
 
-#### Delete product by id from a specific cart
+Delete product by id from a specific cart:
+
 ```curl -X "DELETE" localhost:8080/api/carts/1/products/1```
 
-#### Update product quantity
+Update product quantity:
+
 ```curl -X PUT -H "Content-Type: application/json" -d '{"quantity": 2}' http://localhost:8081/api/carts/1/products/1/quantity```
 
-### Project Operations
+#### Project Operations
 
-#### Create a new project
+Create a new project:
+
 ```curl -d '{"name": "project","year": "2018"}' -H "Content-Type: application/json" -X POST http://localhost:8081/api/projects```
 
-#### Find all projects
+Find all projects:
+
 ```curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:8081/api/projects```
 
-#### Find a specific project
+Find a specific project:
+
 ```curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:8081/api/projects/1```
 
-#### Delete a project
+Delete a project:
+
 ```curl -X "DELETE" http://localhost:8081/api/projects/1```
 
 ### Postman
