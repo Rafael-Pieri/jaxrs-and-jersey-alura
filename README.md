@@ -20,6 +20,8 @@ It contains two controllers, one managing carts and their products,
 and another one for managing products. Below are some curl commands to reach out the
 operations provided by the application.
 
+---
+
 ### Cart Operations
 
 **Create a new cart:**
@@ -46,7 +48,7 @@ operations provided by the application.
 
 `curl -X PUT -H "Content-Type: application/json" -d '{"quantity": 2}' http://localhost:8081/api/carts/1/products/1/quantity`
 
-
+---
 
 ### Project Operations
 
@@ -66,7 +68,7 @@ operations provided by the application.
 
 `curl -X "DELETE" http://localhost:8081/api/projects/1`
 
-
+---
 
 ### Postman
 The postman collection is available to be imported at: https://github.com/rafael-pieri/jaxrs-and-jersey-alura/tree/master/postman
