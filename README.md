@@ -1,4 +1,4 @@
-## Alura Online Courses - JAX-RS and Jersey : Understand the creation of REST webservices
+## JAX-RS and Jersey : Creation of REST webservices
 
 ### Overview
 This repository contains an example of how to implement RESTful Web Services in Java using JAX-RS and Jersey.
