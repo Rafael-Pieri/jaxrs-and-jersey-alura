@@ -12,41 +12,61 @@ From version 1.1 on, JAX-RS is an official part of Java EE 6. A notable feature 
 Jersey RESTful Web Services framework is an open source framework for developing RESTful Web Services in Java. It provides support for JAX-RS APIs and serves as a JAX-RS (JSR 311 & JSR 339) Reference Implementation.
 
 ### How to run the application
+Execute the following command to deploy the application:
+
 ```gradle bootRun```
 
-### Cart Operations
+It contains two controllers, one managing carts and their products,
+and another one for managing products. Below are some curl commands to reach out the
+operations provided by the application.
 
-#### Create a new cart
-```curl -d '{"street": "street one","city": "new york","products": [{"price": 115.9,"name": "shoes","quantity": 1},{"price": 45,"name": "t-shirt","quantity": 1}]}' -H "Content-Type: application/json" -X POST http://localhost:8081/api/carts```
+#### Cart Operations
 
-#### Find all carts
-```curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:8081/api/carts```
+**Create a new cart:**
 
-#### Find a specific cart
-```curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:8081/api/carts/1```
+`curl -d '{"street": "street one","city": "new york","products": [{"price": 115.9,"name": "shoes","quantity": 1},{"price": 45,"name": "t-shirt","quantity": 1}]}' -H "Content-Type: application/json" -X POST http://localhost:8081/api/carts`
 
-#### Delete a cart
-```curl -X "DELETE" http://localhost:8081/api/carts/1```
+**Find all carts:**
 
-#### Delete product by id from a specific cart
-```curl -X "DELETE" localhost:8080/api/carts/1/products/1```
+`curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:8081/api/carts`
 
-#### Update product quantity
-```curl -X PUT -H "Content-Type: application/json" -d '{"quantity": 2}' http://localhost:8081/api/carts/1/products/1/quantity```
+**Find a specific cart:**
 
-### Project Operations
+`curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:8081/api/carts/1`
 
-#### Create a new project
-```curl -d '{"name": "project","year": "2018"}' -H "Content-Type: application/json" -X POST http://localhost:8081/api/projects```
+**Delete a cart:**
 
-#### Find all projects
-```curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:8081/api/projects```
+`curl -X "DELETE" http://localhost:8081/api/carts/1`
 
-#### Find a specific project
-```curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:8081/api/projects/1```
+**Delete product by id from a specific cart:**
 
-#### Delete a project
-```curl -X "DELETE" http://localhost:8081/api/projects/1```
+`curl -X "DELETE" localhost:8080/api/carts/1/products/1`
+
+**Update product quantity:**
+
+`curl -X PUT -H "Content-Type: application/json" -d '{"quantity": 2}' http://localhost:8081/api/carts/1/products/1/quantity`
+
+
+
+#### Project Operations
+
+**Create a new project:**
+
+`curl -d '{"name": "project","year": "2018"}' -H "Content-Type: application/json" -X POST http://localhost:8081/api/projects`
+
+**Find all projects:**
+
+`curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:8081/api/projects`
+
+**Find a specific project:**
+
+`curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:8081/api/projects/1`
+
+**Delete a project:**
+
+`curl -X "DELETE" http://localhost:8081/api/projects/1`
+
+
 
 ### Postman
 The postman collection is available to be imported at: https://github.com/rafael-pieri/jaxrs-and-jersey-alura/tree/master/postman
