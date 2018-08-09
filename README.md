@@ -1,4 +1,4 @@
-## JAX-RS and Jersey : Creation of REST webservices
+## JAX-RS and Jersey: REST webservices
 
 ### Overview
 This repository contains an example of how to implement RESTful Web Services in Java using JAX-RS and Jersey.
@@ -12,9 +12,12 @@ From version 1.1 on, JAX-RS is an official part of Java EE 6. A notable feature 
 Jersey RESTful Web Services framework is an open source framework for developing RESTful Web Services in Java. It provides support for JAX-RS APIs and serves as a JAX-RS (JSR 311 & JSR 339) Reference Implementation.
 
 ### How to run the application
+
+
+
 Execute the following command to deploy the application:
 
-```gradle bootRun```
+```docker-compose up```
 
 It contains two controllers, one managing carts and their products,
 and another one for managing products. Below are some curl commands to reach out the
