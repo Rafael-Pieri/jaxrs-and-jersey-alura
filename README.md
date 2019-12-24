@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/rafael-pieri/jaxrs-and-jersey-alura.svg?branch=master)](https://travis-ci.com/rafael-pieri/jaxrs-and-jersey-alura)
+
 ## JAX-RS and Jersey: REST webservices
 
 ### Overview
