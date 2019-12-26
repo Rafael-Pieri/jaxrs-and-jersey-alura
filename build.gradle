@@ -29,10 +29,9 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.springframework.boot:spring-boot-starter-web')
     compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.9.3'
-
+    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.2.11'
     runtime('mysql:mysql-connector-java')
     runtime ('com.h2database:h2:1.4.197')
-
     testCompile group: 'com.jayway.restassured', name: 'rest-assured', version: '2.9.0'
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
